@@ -6,11 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common" />
-        <module name="protocol" />
         <module name="client" />
+        <module name="protocol" />
         <module name="server" />
+        <module name="common" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="fim" target="1.8" />
+      <module name="protocol" target="1.8" />
+      <module name="server" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

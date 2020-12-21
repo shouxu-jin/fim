@@ -1,5 +1,34 @@
 syntax = "proto3";
+
 package fim.protocol;
-message Request {
-  required string name = 1;
+message MessageRequest {
+    int32 senderId = 1;
+    int32 receiverId = 2;
+    int32 messageType = 3;
+    string content = 4;
+}
+message MessageAck {
+    bool receiveSuccess = 1;
+    int64 messageId = 2;
+}
+message MessageNotify {
+    int32 senderId = 1;
+    int64 messageId = 2;
+    int32 messageType = 3;
+    string content = 4;
+}
+message AckRequest {
+    int32 senderId = 1;
+    int64 messageId = 2;
+}
+message AckAck {
+    bool receiveSuccess = 1;
+}
+message AckNotify {
+    int64 messageId = 1;
+    int32 receiverId = 2;
+}
+message ReadReceiptRequest {
+    int32 senderId = 1;
+    int64 maxMessageId = 2;
 }

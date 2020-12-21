@@ -1,5 +1,0 @@
-syntax = "proto2";
-package sdfds;
-message Request {
-  required string name = 1;
-}
