@@ -1,6 +1,35 @@
 syntax = "proto3";
 
 package fim.protocol;
+message Message {
+    enum DataType {
+        MessageRequestType = 0;
+        MessageAckType = 1;
+        MessageNotifyType = 2;
+        AckRequestType = 3;
+        AckAckType = 4;
+        AckNotifyType = 5;
+        ReadReceiptRequestType = 6;
+        LoginRequestType = 7;
+        LoginResponseType = 8;
+        HeartbeatType = 9;
+    }
+    DataType dataType = 1;
+
+    oneof dataBody {
+        MessageRequest messageRequest = 2;
+        MessageAck messageAck = 3;
+        MessageNotify messageNotify = 4;
+        AckRequest ackRequest = 5;
+        AckAck ackAck = 6;
+        AckNotify ackNotify = 7;
+        ReadReceiptRequest readReceiptRequest = 8;
+        LoginRequest loginRequest = 9;
+        LoginResponse loginResponse = 10;
+        Heartbeat heartbeat = 11;
+    }
+}
+
 message MessageRequest {
     int32 senderId = 1;
     int32 receiverId = 2;
@@ -31,4 +60,17 @@ message AckNotify {
 message ReadReceiptRequest {
     int32 senderId = 1;
     int64 maxMessageId = 2;
+}
+message LoginRequest {
+    int32 userId  = 1;
+    string username = 2;
+    string password = 3;
+    string token = 4;
+}
+message LoginResponse {
+    bool loginSuccess = 1;
+    string errorMsg = 2;
+}
+message Heartbeat {
+
 }
